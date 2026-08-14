@@ -4,12 +4,12 @@
 
 1. Instale as dependências:
    ```
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 
 2. Rode o sistema:
    ```
-   python src/main.py
+   python3 src/main.py
    ```
 
 3. No menu:
