@@ -1,16 +1,3 @@
-"""
-main.py
-
-Sistema de Identificação e Autenticação Biométrica
-Ministério do Meio Ambiente (dados fictícios) -- APS 5º/6º CC, UNIP.
-
-Interface de linha de comando com 3 fluxos principais:
-1. Cadastrar usuário (enrollment biométrico)
-2. Autenticar usuário (verificação biométrica + liberação de acesso
-   conforme nível: 1 = todos, 2 = diretores de divisão, 3 = ministro)
-3. Consultar logs de acesso (tratamento de erros / auditoria)
-"""
-
 import hashlib
 import os
 import sys
@@ -25,7 +12,6 @@ import biometria
 PASTA_DIGITAIS = os.path.join(os.path.dirname(__file__), "..", "digitais")
 
 def seed_por_nome(nome: str) -> int:
-    """Gera uma semente estável a partir do nome informado."""
     nome_normalizado = nome.strip().casefold().encode("utf-8")
     digest = hashlib.sha256(nome_normalizado).digest()
     return int.from_bytes(digest[:8], "big") % 100000

@@ -1,21 +1,3 @@
-"""
-banco_dados.py
-
-Camada de persistência do sistema. Utiliza SQLite para simular a "rede
-com banco de dados do Ministério do Meio Ambiente" descrita no enunciado
-da APS.
-
-Tabelas:
-- usuarios: cadastro de cada usuário autorizado, seu nível de acesso
-  (1, 2 ou 3) e o caminho da imagem de digital cadastrada.
-- documentos: informações fictícias do Ministério do Meio Ambiente,
-  cada uma associada a um nível mínimo de acesso necessário para
-  visualização.
-- logs_acesso: registro de toda tentativa de autenticação (sucesso ou
-  falha), atendendo ao requisito de tratamento de erros e rastreabilidade
-  do sistema.
-"""
-
 import sqlite3
 import os
 from datetime import datetime
@@ -30,7 +12,7 @@ def conectar():
 
 
 def inicializar_banco():
-    """Cria as tabelas do sistema, caso não existam, e popula documentos."""
+    # """Cria as tabelas do sistema, caso não existam, e popula documentos."""
     os.makedirs(os.path.dirname(CAMINHO_BANCO), exist_ok=True)
     conexao = conectar()
     cursor = conexao.cursor()

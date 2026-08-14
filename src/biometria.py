@@ -1,29 +1,3 @@
-"""
-biometria.py
-
-Núcleo do sistema de reconhecimento biométrico.
-
-Algoritmo utilizado: ORB (Oriented FAST and Rotated BRIEF)
-- FAST: detecta pontos-chave (keypoints) de interesse em regiões de variação
-  local de intensidade. Neste projeto, esses pontos são usados como
-  características visuais genéricas; não se trata de um extrator dedicado de
-  minúcias de sistemas AFIS.
-- BRIEF: gera um descritor binário compacto para cada keypoint, permitindo
-  comparação rápida.
-- BFMatcher (Brute-Force Matcher) com distância de Hamming: compara os
-  descritores de duas imagens e conta quantos pontos correspondem entre si.
-
-ORB foi escolhido por sua eficiência computacional, pelo uso de descritores
-binários e pela integração direta com o OpenCV. No contexto acadêmico deste
-projeto, ele atua como um método de comparação de características locais em
-imagens de alto contraste.
-
-O grau de similaridade entre duas digitais é calculado como a proporção
-de "bons matches" (distância de Hamming abaixo de um limiar) em relação
-ao número de keypoints detectados. Um limiar (THRESHOLD_AUTENTICACAO)
-decide se a autenticação é aceita ou rejeitada.
-"""
-
 import cv2
 import numpy as np
 
@@ -39,7 +13,6 @@ class DigitalInvalidaError(Exception):
 
 
 def extrair_caracteristicas(imagem: np.ndarray):
-    """Extrai keypoints e descritores ORB de uma imagem de digital."""
     if imagem is None or imagem.size == 0:
         raise DigitalInvalidaError("Imagem de digital vazia ou inválida.")
 
@@ -82,14 +55,6 @@ def comparar_digitais(img_cadastrada: np.ndarray, img_tentativa: np.ndarray) -> 
 
 
 def autenticar(imagem_tentativa: np.ndarray, candidatos: list):
-    """
-    Compara a imagem de tentativa contra uma lista de candidatos cadastrados.
-
-    candidatos: lista de tuplas (usuario_id, nome, imagem_cadastrada)
-
-    Retorna (usuario_id, nome, score) do melhor candidato SE o score
-    ultrapassar o THRESHOLD_AUTENTICACAO; caso contrário retorna None.
-    """
     melhor = None
     melhor_score = 0.0
 
