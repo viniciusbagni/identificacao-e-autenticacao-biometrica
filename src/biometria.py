@@ -30,10 +30,6 @@ def extrair_caracteristicas(imagem: np.ndarray):
 
 
 def comparar_digitais(img_cadastrada: np.ndarray, img_tentativa: np.ndarray) -> float:
-    """
-    Compara duas imagens de digital e retorna um score de similaridade
-    entre 0.0 (nenhuma semelhança) e 1.0 (idêntica).
-    """
     try:
         kp1, desc1 = extrair_caracteristicas(img_cadastrada)
         kp2, desc2 = extrair_caracteristicas(img_tentativa)

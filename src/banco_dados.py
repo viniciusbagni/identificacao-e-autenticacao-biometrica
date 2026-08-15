@@ -12,7 +12,6 @@ def conectar():
 
 
 def inicializar_banco():
-    # """Cria as tabelas do sistema, caso não existam, e popula documentos."""
     os.makedirs(os.path.dirname(CAMINHO_BANCO), exist_ok=True)
     conexao = conectar()
     cursor = conexao.cursor()
